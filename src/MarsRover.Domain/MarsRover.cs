@@ -81,7 +81,8 @@ namespace MarsRover.Domain
                 Direction.North => RoverDirection = Direction.West,
                 Direction.East => RoverDirection = Direction.North,
                 Direction.South => RoverDirection = Direction.East,
-                Direction.West => RoverDirection = Direction.South
+                Direction.West => RoverDirection = Direction.South,
+                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
             };
 
         private Direction RightMove(Direction direction) =>
@@ -90,7 +91,8 @@ namespace MarsRover.Domain
                 Direction.North => RoverDirection = Direction.East,
                 Direction.East => RoverDirection = Direction.South,
                 Direction.South => RoverDirection = Direction.West,
-                Direction.West => RoverDirection = Direction.North
+                Direction.West => RoverDirection = Direction.North,
+                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
             };
 
         private Point MoveForward(Direction direction) =>
@@ -99,7 +101,8 @@ namespace MarsRover.Domain
                 Direction.North => RoverPosition = new Point(RoverPosition.X, RoverPosition.Y + 1),
                 Direction.East => RoverPosition = new Point(RoverPosition.X + 1, RoverPosition.Y),
                 Direction.South => RoverPosition = new Point(RoverPosition.X, RoverPosition.Y - 1),
-                Direction.West => RoverPosition = new Point(RoverPosition.X - 1, RoverPosition.Y)
+                Direction.West => RoverPosition = new Point(RoverPosition.X - 1, RoverPosition.Y),
+                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
             };
 
         #endregion
